@@ -7,10 +7,10 @@ import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
 const validate = values => {
   const errors = {}
-  if (!values.itemName) {
-    errors.itemName = 'Required'
-  } else if (values.itemName.length > 15) {
-    errors.itemName = 'Must be 15 characters or less'
+  if (!values.itemId) {
+    errors.itemId = 'Required'
+  } else if (values.itemId.length > 15) {
+    errors.itemId = 'Must be 15 characters or less'
   }
   return errors
 }
@@ -24,8 +24,7 @@ class ContactForm extends Component {
   }
 
   render() {
-    const {fields: {customerName,itemName,customerType}, handleSubmit,items,customers} = this.props;
-    debugger;
+    const {fields: {customerName,itemId,customerId}, handleSubmit,items,customers} = this.props;
     return (
       <form onSubmit={handleSubmit(this.dumbSubmit.bind(this))}>
         <div>
@@ -36,30 +35,30 @@ class ContactForm extends Component {
          <div>
             <label>Item</label>
             <div>
-              <select {...itemName}>
+              <select {...itemId}>
                 <option value="">Select an Item...</option>
                 { items.map( (item) =>  
                 			 <option 
-                				value={item.itemName} key={item.itemId}>
+                				value={item.itemId} key={item.itemId}>
                 				{item.itemName}
                 			</option>
                 )}
               </select>
-              {itemName.touched && itemName.error && <div>{itemName.error}</div>}
+              {itemId.touched && itemId.error && <div>{itemId.error}</div>}
             </div>
             </div>
             <div>
             <label>Customer Type</label>
             <div>
-              <select {...customerType}>
+              <select {...customerId}>
                 { customers.map( (customer) =>  
                 			 <option 
-                				value={customer.customerType} key={customer.id}>
+                				value={customer.id} key={customer.id}>
                 				{customer.customerType}
                 			</option>
                 )}
               </select>
-              {itemName.touched && itemName.error && <div>{itemName.error}</div>}
+              {customerId.touched && customerId.error && <div>{customerId.error}</div>}
             </div>
           </div>
         <Button type="submit" bsStyle="success" bsSize="small" >Submit</Button>
@@ -71,14 +70,13 @@ class ContactForm extends Component {
 
 ContactForm = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
   form: 'contact',                           // a unique name for this form
-  fields: ['customerName','itemName','customerType'],
+  fields: ['customerName','itemId','customerId'],
   validate // all the fields in your form
 })(ContactForm);
 
 
 // provide state of app as prop to UserList  component
 function mapStateToProps(state){
-	debugger;
 	return {
 		items : state.items,
 		customers : state.customers

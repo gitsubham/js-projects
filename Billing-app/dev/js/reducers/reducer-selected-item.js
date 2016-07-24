@@ -2,11 +2,15 @@
 // for the initial values. So we have to set some initial value , otherwise it will be undefined.
 // here we have set default input as null.
 // Note that it has taken action as input.
-export default function (state = null,action) {
+export default function (state = [],action) {
 	switch(action.type){
 		case "ADD_ITEM" : 
-			return action.payload;
+			return [
+				...state, action.payload
+			] ;
 			break;
+		default : 
+			return state;
 
 	}
 	// return if nothing matches.
