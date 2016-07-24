@@ -1,6 +1,4 @@
 import React from 'React';
-import UserList from '../containers/user-list';
-import UserDetail from '../containers/user-detail';
 import BillerForm from '../components/biller-form';
 import { Grid } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
