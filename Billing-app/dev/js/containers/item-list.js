@@ -4,29 +4,6 @@ import {connect} from 'react-redux';
 
 
 class ItemList extends Component {
-	printCustomerTypeandDiscount(){
-		return this.props.addedItem.map((record) =>{
-			var selectedCustomerType = {};
-			console.log(this.props.customerTypes);
-			console.log("record");
-			console.log(record);
-			this.props.customerTypes.map((customerType) => {
-				if (customerType.id == record.customerId){
-					selectedCustomerType= customerType;
-					console.log("selectedCustomerType");
-					console.log(selectedCustomerType);
-				}
-			} 
-			)
-			
-			return (
-				<div> 
-					CustomerType Info : 
-					{selectedCustomerType.customerType}  {selectedCustomerType.discount} 
-				</div>
-		);
-		})	
-	}
 	createListItems(){
 		return this.props.addedItem.map((item) =>{
 			console.log(this.props.items);
@@ -37,23 +14,29 @@ class ItemList extends Component {
 				}
 			} 
 			)
+			var price =  item.qty * selectedItem.itemPrice;
 			console.log(selectedItem);
 			return (
-				<div>  {selectedItem.itemName} {selectedItem.itemPrice} 
-						 {selectedItem.weight} {selectedItem.description} {item.qty} 
+				<div>  
+					<div>
+						<span> {selectedItem.itemName} </span>
+						<span> {selectedItem.itemPrice}  </span>
+						<span> {selectedItem.weight} </span>
+						<span> {selectedItem.description} </span>
+						<span> {item.qty} </span>
+						<span> {price} </span>
+					</div>
 				</div>
 		);
 		})	
 	}
 	render() {
-		
 		if (!this.props.addedItem){
 			return (<h4> Add an Item..</h4>)
 		}	 
 		return (
 			<div>
 				{this.createListItems()}
-				{this.printCustomerTypeandDiscount()}
 			</div>
 		);
 	}

@@ -66,7 +66,7 @@ class ContactForm extends Component {
               {customerId.touched && customerId.error && <div>{customerId.error}</div>}
             </div>
           </div>
-        <Button type="submit" bsStyle="success" bsSize="small" >Submit</Button>
+        <Button type="submit" bsStyle="success" bsSize="small" >Add Item</Button>
       </form>
     );
   }

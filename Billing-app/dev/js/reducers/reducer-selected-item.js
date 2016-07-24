@@ -14,6 +14,5 @@ export default function (state = [],action) {
 
 	}
 	// return if nothing matches.
-	debugger
 	return state;
 }

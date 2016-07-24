@@ -3,7 +3,7 @@ import UserList from '../containers/user-list';
 import UserDetail from '../containers/user-detail';
 import BillerForm from '../components/biller-form';
 
-import ItemList from '../containers/item-list';
+import Bill from '../containers/bill';
 require('../../scss/style.scss'); 
 
 
@@ -15,7 +15,7 @@ const App = () => (
 	<div> 
 		<BillerForm mySubmitHandler={abc} />
 		<hr />
-		<ItemList />	
+		<Bill />	
 	</div>
 );
 
