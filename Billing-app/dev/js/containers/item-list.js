@@ -8,8 +8,9 @@ class ItemList extends Component {
 		debugger
 		return (
 			<div>
-					<span key={this.props.addedItem.itemId}> {this.props.addedItem.customerName} </span>
-					<span key={this.props.addedItem.itemName}> {this.props.addedItem.itemName} </span>
+					{/*<span key={this.props.addedItem[0].itemId}> {this.props.addedItem[0].customerName} </span>
+					<span key={this.props.addedItem[0].itemName}> {this.props.addedItem[0].itemName} </span>*/}
+					hello react
 			</div>
 
 		);

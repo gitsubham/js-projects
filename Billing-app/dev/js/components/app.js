@@ -8,7 +8,6 @@ require('../../scss/style.scss');
 
 
 var abc = (values) => { 
-	console.log(values)
 } 
 
 const App = () => (

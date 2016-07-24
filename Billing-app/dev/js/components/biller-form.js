@@ -5,6 +5,7 @@ import {addItem} from '../actions/add-item-action';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import { Button } from 'react-bootstrap';
+
 const validate = values => {
   const errors = {}
   if (!values.itemName) {
@@ -17,14 +18,15 @@ const validate = values => {
 
 
 class ContactForm extends Component {
-  dumbSubmit(values) {
-	const { mySubmitHandler} = this.props;
-	mySubmitHandler(values);
-	this.props.addItem(values);
+  dumbSubmit(item) {
+  	const { mySubmitHandler,orderBasket} = this.props;
+   // orderBasket.push(item);
+  	mySubmitHandler(item);
+  	this.props.addItem(item);
   }
 
   render() {
-    const {fields: {customerName,itemName,customerType}, handleSubmit,items,customers} = this.props;
+    const {fields: {customerName,itemName,customerType}, handleSubmit,items,customers,orderBasket} = this.props;
     debugger;
     return (
       <form onSubmit={handleSubmit(this.dumbSubmit.bind(this))}>
@@ -81,7 +83,8 @@ function mapStateToProps(state){
 	debugger;
 	return {
 		items : state.items,
-		customers : state.customers
+		customers : state.customers,
+    orderBasket: state.orderBasket
 	}
 }
 
