@@ -40,7 +40,7 @@ class ItemList extends Component {
 			console.log(selectedItem);
 			return (
 				<div>  {selectedItem.itemName} {selectedItem.itemPrice} 
-						{selectedItem.weight} {selectedItem.description}
+						 {selectedItem.weight} {selectedItem.description} {item.qty} 
 				</div>
 		);
 		})	

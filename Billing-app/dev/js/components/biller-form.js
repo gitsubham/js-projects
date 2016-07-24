@@ -24,7 +24,7 @@ class ContactForm extends Component {
   }
 
   render() {
-    const {fields: {customerName,itemId,customerId}, handleSubmit,items,customers} = this.props;
+    const {fields: {customerName,itemId,customerId,qty}, handleSubmit,items,customers} = this.props;
     return (
       <form onSubmit={handleSubmit(this.dumbSubmit.bind(this))}>
         <div>
@@ -47,6 +47,11 @@ class ContactForm extends Component {
               {itemId.touched && itemId.error && <div>{itemId.error}</div>}
             </div>
             </div>
+             <div>
+                <label>Quantity</label>
+                <input type="number" placeholder="quantity" {...qty}/>
+                {qty.touched && qty.error && <div>{qty.error}</div>}
+             </div>
             <div>
             <label>Customer Type</label>
             <div>
@@ -70,7 +75,7 @@ class ContactForm extends Component {
 
 ContactForm = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
   form: 'contact',                           // a unique name for this form
-  fields: ['customerName','itemId','customerId'],
+  fields: ['customerName','itemId','customerId','qty'],
   validate // all the fields in your form
 })(ContactForm);
 
