@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import {generateBill} from '../actions/generate-bill-action';
+import { Alert,Well,Row,Col } from 'react-bootstrap';
 
 class CustomerInfo extends Component {
 	printCustomerTypeandDiscount(){
@@ -19,16 +20,19 @@ class CustomerInfo extends Component {
 			})
 			
 			return (
-				<div> 
-					CustomerType Info : 
-					{record.customerName} {selectedCustomerType.customerType}  {selectedCustomerType.discount} 
-				</div>
+				<Alert> 
+					<span> customerName :  {record.customerName}  </span>
+					<span> customerType :  {selectedCustomerType.customerType}  </span>
+					<span> discount :  {selectedCustomerType.discount}  </span>
+				</Alert>
 		);
 		})	
+		
+
 	}
 	render() {
 		if (!this.props.addedItem){
-			return ;
+			return(<div> ADD SOMETHING.... </div>) ;
 		}	 
 		return (
 			<div>
@@ -43,7 +47,13 @@ function mapStateToProps(state){
 	return {
 		addedItem: state.addedItem,
 		items : state.items,
-		customerTypes : state.customers
+		customerTypes : state.customers,
+		bill : state.bill
 	}
 }
-export default connect(mapStateToProps)(CustomerInfo)
+
+function matchDispatchToProps(dispatch){
+	return bindActionCreators({generateBill : generateBill},dispatch);
+}
+
+export default connect(mapStateToProps,matchDispatchToProps)(CustomerInfo)

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import { Alert,Well,Row,Col } from 'react-bootstrap';
 
 class ItemList extends Component {
 	createListItems(){
@@ -17,16 +17,16 @@ class ItemList extends Component {
 			var price =  item.qty * selectedItem.itemPrice;
 			console.log(selectedItem);
 			return (
-				<div>  
-					<div>
-						<span> {selectedItem.itemName} </span>
-						<span> {selectedItem.itemPrice}  </span>
-						<span> {selectedItem.weight} </span>
-						<span> {selectedItem.description} </span>
-						<span> {item.qty} </span>
-						<span> {price} </span>
-					</div>
-				</div>
+				
+					<Alert bsStyle="warning">
+						<span > Item name : {selectedItem.itemName} </span>
+						<span> Item Price : {selectedItem.itemPrice}  </span>
+						<span> Item Weight : {selectedItem.weight} </span>
+						<span> Item description : {selectedItem.description} </span>
+						<span> Item Quantity : {item.qty} </span>
+						<span> Total Price : {price} </span>
+					</Alert>
+				
 		);
 		})	
 	}
