@@ -4,7 +4,7 @@ import { Field } from 'redux-form';
 import {addItem} from '../actions/add-item-action';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
+import { Button } from 'react-bootstrap';
 const validate = values => {
   const errors = {}
   if (!values.itemName) {
@@ -62,7 +62,7 @@ class ContactForm extends Component {
               {itemName.touched && itemName.error && <div>{itemName.error}</div>}
             </div>
           </div>
-        <button type="submit">Submit</button>
+        <Button type="submit" bsStyle="success" bsSize="small" >Submit</Button>
       </form>
     );
   }

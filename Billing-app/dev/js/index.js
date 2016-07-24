@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import allReducers from './reducers';
 import App from './components/app';
-
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 
 
 

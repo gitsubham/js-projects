@@ -1,1 +1,3 @@
 npm --max_old_space_size=384 run start
+
+npm --max_old_space_size=384 install bootstrap react-bootstrap babel-preset-react --save
